@@ -1,6 +1,6 @@
 import React from 'react'
 import Lottie from 'lottie-react'
-import ScrollDownIcon from '../public/lottie/scroll-down.json'
+import ScrollDownIcon from '../public/lottie/scroll-down-grey.json'
 import IContainer from '../interfaces/container.interface'
 import Button from './Button'
 
