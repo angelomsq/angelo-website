@@ -20,7 +20,7 @@ const Layout: React.FC<ILayout> = ({ children, site, menu }) => {
   useEffect(() => {
     setTimeout(() => {
       setIsScrolling(false)
-    }, 1500)
+    }, 500)
   }, [active])
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const Layout: React.FC<ILayout> = ({ children, site, menu }) => {
 
       if (nextMenu !== active) {
         scroller.scrollTo(menu[nextMenu].url.replace(/[^a-zA-Z0-9]/g, ''), {
-          duration: 1500,
+          duration: 500,
           delay: 0,
           smooth: true,
         })
