@@ -1,26 +1,29 @@
-import React, { useState } from 'react'
-import Link from 'next/link'
+import React, { Dispatch, SetStateAction, useEffect } from 'react'
+import { Link } from 'react-scroll'
 import IMenu from '../interfaces/menu.interface'
 
 interface ISide {
   menu: IMenu[]
+  active: number
+  setActive: Dispatch<SetStateAction<number>>
 }
 
-const Menu: React.FC<ISide> = ({ menu }) => {
-  const [active, setActive] = useState(0)
+const Menu: React.FC<ISide> = ({ menu, active, setActive }) => {
   return (
     <aside className="fixed right-0 hidden min-h-screen w-24 flex-col items-center justify-center sm:flex">
       <ul className="relative z-0 flex w-full flex-col items-center">
         {menu.map((item, index) => (
-          <li
-            key={index}
-            className={`flex w-full justify-center ${index === menu.length - 1 ? '' : 'pb-12'}`}
-          >
+          <li key={index} className="flex w-full justify-center pb-12 last-of-type:pb-0">
             <Link
-              href={item.url}
-              scroll={false}
-              className="group relative transition-all ease-in"
+              // href={item.url}
+              to={item.url.replace(/[^a-zA-Z0-9]/g, '')}
+              hashSpy
+              // spy
+              smooth
+              duration={500}
+              className="group relative cursor-pointer transition-all ease-in"
               onClick={() => setActive(index)}
+              // onSetActive={() => setActive(index)}
             >
               <svg
                 viewBox="0 0 36 36"

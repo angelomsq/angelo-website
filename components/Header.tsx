@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { animateScroll } from 'react-scroll'
 import {
   FaGithub,
   FaLinkedinIn,
@@ -12,9 +13,14 @@ import ISite from '../interfaces/site.interface'
 
 const Header: React.FC<ISite> = ({ instagram, linkedin, github, whatsapp, youtube, discord }) => {
   return (
-    <header className="fixed z-10 h-20 w-full flex-col content-between items-center bg-white bg-opacity-80 py-4 dark:bg-background dark:bg-opacity-80 sm:flex sm:min-h-screen sm:w-24 sm:bg-transparent sm:py-6">
+    <header className="fixed z-10 h-20 w-full flex-col content-between items-center bg-white bg-opacity-80 py-4 dark:bg-background dark:bg-opacity-80 sm:flex sm:min-h-screen sm:w-24 sm:bg-transparent sm:py-6 dark:sm:bg-transparent">
       <div className="flex flex-col items-center sm:h-48">
-        <Link href="/">
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            animateScroll.scrollToTop()
+          }}
+        >
           <svg
             width="60"
             viewBox="0 0 67 49"
@@ -51,7 +57,7 @@ const Header: React.FC<ISite> = ({ instagram, linkedin, github, whatsapp, youtub
               fill="#8B5CF6"
             />
           </svg>
-        </Link>
+        </div>
 
         <div className="hidden w-[3px] flex-1 rounded-full bg-tertiary dark:bg-white sm:flex sm:h-full">
           &nbsp;
