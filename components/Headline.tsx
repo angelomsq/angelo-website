@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Lottie from 'lottie-react'
 import ScrollDownIcon from '../public/lottie/scroll-down-grey.json'
 import IContainer from '../interfaces/container.interface'
 import Button from './Button'
 
 const Headline: React.FC<IContainer> = ({ id, anchor, heading, label, description, links }) => {
+  const ref = useRef(null)
   return (
-    <section id={anchor} className="headline flex min-h-screen w-full justify-center">
+    <section
+      ref={ref}
+      id={anchor}
+      className="headline flex min-h-screen w-full justify-center sm:snap-center sm:snap-always"
+    >
       <div className="container my-0 mx-4 flex flex-1 flex-col items-center sm:mx-24 lg:mx-40">
         <h1
-          className="mb-6 mt-auto text-4xl lg:w-3/4 lg:text-5xl"
+          className="mb-6 mt-20 text-4xl sm:mt-auto lg:w-3/4 lg:text-5xl"
           dangerouslySetInnerHTML={{ __html: heading }}
         />
         <div

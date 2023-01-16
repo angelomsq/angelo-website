@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from 'next/image'
 import IContainer from '../interfaces/container.interface'
 import Button from './Button'
@@ -13,10 +13,12 @@ const Feature: React.FC<IContainer> = ({
   links,
   image,
 }) => {
+  const ref = useRef(null)
   return (
     <section
+      ref={ref}
       id={anchor}
-      className="feature flex min-h-screen items-center justify-center py-24 sm:py-0"
+      className="feature flex min-h-screen snap-center snap-always items-center justify-center py-24 sm:py-0"
     >
       <div className="container my-0 mx-4 flex flex-col sm:mx-24 md:flex-row lg:mx-40 ">
         <div className="order-2 flex flex-col content-between sm:pr-6 md:order-1">

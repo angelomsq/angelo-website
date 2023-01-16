@@ -1,28 +1,24 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react'
-import { Link as ScrollLink, scrollSpy } from 'react-scroll'
+import React, { useState } from 'react'
+import { Link as ScrollLink } from 'react-scroll'
 import IMenu from '../interfaces/menu.interface'
 
 interface ISide {
   menu: IMenu[]
-  active: number
-  setActive: Dispatch<SetStateAction<number>>
 }
 
-const Menu: React.FC<ISide> = ({ menu, active, setActive }) => {
-  useEffect(() => {
-    scrollSpy.update()
-  }, [])
+const Menu: React.FC<ISide> = ({ menu }) => {
+  const [active, setActive] = useState(0)
   return (
     <aside className="fixed right-0 hidden min-h-screen w-24 flex-col items-center justify-center sm:flex">
       <ul className="relative z-0 flex w-full flex-col items-center">
         {menu.map((item, index) => (
           <li key={index} className="flex w-full justify-center pb-12 last-of-type:pb-0">
             <ScrollLink
+              // href={item.url}
               to={item.url.replace(/[^a-zA-Z0-9]/g, '')}
               hashSpy
               spy
-              smooth={'easeInOutQuad'}
-              duration={500}
+              smooth={false}
               className="group relative cursor-pointer transition-all ease-in"
               onClick={() => setActive(index)}
               onSetActive={() => setActive(index)}
