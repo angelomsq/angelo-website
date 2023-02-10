@@ -24,14 +24,18 @@ const Logos: React.FC<IContainer> = ({ anchor, heading, description, items }) =>
         <div className="mt-10 grid w-full grid-cols-4 items-center gap-4 lg:grid-cols-8 lg:gap-6">
           {items &&
             items.map((item) => (
-              <div key={item.items_id.id} className="flex w-auto items-center justify-center">
+              <div
+                key={item.items_id.id}
+                className="group relative flex w-auto items-center justify-center transition-all ease-in"
+              >
                 <Image
                   src={getMediaURL(item.items_id.image.id)}
-                  width={80}
-                  height={80}
+                  width={100}
+                  height={100}
                   alt={item.items_id.image.title}
-                  className="text-center"
+                  className="h-20 w-20 text-center transition-all ease-in group-hover:scale-125"
                 />
+                <span className="tooltip-top">{item.items_id.title}</span>
               </div>
             ))}
         </div>

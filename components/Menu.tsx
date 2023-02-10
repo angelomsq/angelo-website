@@ -9,8 +9,8 @@ interface ISide {
 const Menu: React.FC<ISide> = ({ menu }) => {
   const [active, setActive] = useState(0)
   return (
-    <aside className="fixed right-0 hidden min-h-screen w-24 flex-col items-center justify-center sm:flex">
-      <ul className="relative z-0 flex w-full flex-col items-center">
+    <aside className="fixed right-0 z-10 hidden min-h-screen w-24 flex-col items-center justify-center sm:flex">
+      <ul className="relative flex w-full flex-col items-center">
         {menu.map((item, index) => (
           <li key={index} className="flex w-full justify-center pb-12 last-of-type:pb-0">
             <ScrollLink

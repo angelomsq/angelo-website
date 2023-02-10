@@ -7,6 +7,7 @@ const imageFragment = gql`
     description
     width
     height
+    filename_download
   }
 `
 

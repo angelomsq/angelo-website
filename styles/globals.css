@@ -29,7 +29,11 @@
   }
 
   .tooltip-left {
-    @apply absolute top-[calc((100%_-_2rem)_/_2)] -left-[calc(10rem_+_0.75rem)] hidden h-10 w-40 items-center rounded-lg bg-gray-700 px-2 py-1 text-center text-base text-white before:absolute before:top-1/2 before:left-[100%] before:-translate-y-1/2 before:border-8 before:border-y-transparent before:border-r-transparent before:border-l-gray-700 before:content-[''] group-hover:flex group-hover:items-center group-hover:justify-center dark:bg-slate-50 dark:text-background dark:before:border-l-slate-50;
+    @apply absolute top-[calc((100%_-_2rem)_/_2)] -left-[calc(10rem_+_0.75rem)] z-50 hidden h-10 w-40 items-center rounded-lg bg-gray-700 px-2 py-1 text-center text-base text-white before:absolute before:top-1/2 before:left-[100%] before:-translate-y-1/2 before:border-8 before:border-y-transparent before:border-r-transparent before:border-l-gray-700 before:content-[''] group-hover:flex group-hover:items-center group-hover:justify-center dark:bg-slate-50 dark:text-background dark:before:border-l-slate-50;
+  }
+
+  .tooltip-top {
+    @apply invisible absolute -top-14 hidden h-10 min-w-max items-center rounded-lg bg-gray-700 px-2 py-1 text-center text-base text-white before:absolute before:top-full before:left-[calc((100%_-_1rem)_/_2)] before:border-8 before:border-x-transparent before:border-b-transparent before:border-t-gray-700 before:content-[''] group-hover:visible group-hover:flex group-hover:items-center group-hover:justify-center dark:bg-slate-50 dark:text-background dark:before:border-l-slate-50;
   }
 }
 
@@ -55,6 +59,6 @@
   }
 
   .headline h1 strong {
-    @apply bg-gradient-to-r from-secondary via-primary to-secondary-dark bg-clip-text font-bold text-transparent;
+    @apply primary-gradient;
   }
 }

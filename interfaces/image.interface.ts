@@ -4,4 +4,5 @@ export default interface IImage {
   description: string | null
   width: number | null
   height: number | null
+  filename_download: string
 }
