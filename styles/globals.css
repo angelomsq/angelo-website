@@ -33,7 +33,7 @@
   }
 
   .tooltip-top {
-    @apply invisible absolute -top-14 hidden h-10 min-w-max items-center rounded-lg bg-gray-700 px-2 py-1 text-center text-base text-white before:absolute before:top-full before:left-[calc((100%_-_1rem)_/_2)] before:border-8 before:border-x-transparent before:border-b-transparent before:border-t-gray-700 before:content-[''] group-hover:visible group-hover:flex group-hover:items-center group-hover:justify-center dark:bg-slate-50 dark:text-background dark:before:border-l-slate-50;
+    @apply invisible absolute -top-14 hidden h-10 min-w-max items-center rounded-lg bg-gray-700 px-2 py-1 text-center text-base text-white before:absolute before:top-full before:left-[calc((100%_-_1rem)_/_2)] before:border-8 before:border-x-transparent before:border-b-transparent before:border-t-gray-700 before:content-[''] group-hover:visible group-hover:flex group-hover:items-center group-hover:justify-center dark:bg-slate-50 dark:text-background dark:before:border-t-slate-50;
   }
 }
 
