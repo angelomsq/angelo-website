@@ -38,7 +38,7 @@ const Projects: React.FC<IProjects> = ({ anchor, heading, description, projects 
                 <div
                   className={`${
                     index === 2 ? 'sm:w-1/2' : 'sm:w-1/3'
-                  } relative w-full flex-none overflow-hidden rounded-t-xl sm:rounded-l-xl sm:rounded-r-none xl:w-full xl:rounded-t-xl xl:rounded-l-none`}
+                  } relative w-full flex-none overflow-hidden rounded-tl-xl rounded-tr-xl sm:rounded-bl-xl sm:rounded-tr-none xl:w-full xl:rounded-tr-xl xl:rounded-bl-none`}
                 >
                   <Image
                     src={getMediaURL(project.image.id)}

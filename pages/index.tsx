@@ -44,7 +44,6 @@ const Home: React.FC<IHome> = ({
     pagePath: url,
     ogType: 'Website',
   }
-  console.info(projects)
   return (
     <>
       <Seo {...seo} />
