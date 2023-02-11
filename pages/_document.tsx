@@ -4,7 +4,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en-us" className="dark snap-y scroll-smooth sm:snap-mandatory">
+      <Html lang="en-us" className="dark scroll-smooth sm:snap-y sm:snap-mandatory">
         <Head>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

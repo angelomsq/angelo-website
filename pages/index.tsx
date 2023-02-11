@@ -6,6 +6,7 @@ import directus from '../services/directus'
 
 import IImage from '../interfaces/image.interface'
 import IContainer from '../interfaces/container.interface'
+import IProject from '../interfaces/project.interface'
 import Headline from '../components/Headline'
 import Feature from '../components/Feature'
 import Logos from '../components/Logos'
@@ -25,9 +26,17 @@ interface IHome {
   url: string
   content: string
   blocks: IBlock[]
+  projects: IProject[]
 }
 
-const Home: React.FC<IHome> = ({ page_title, page_description, page_image, url, blocks }) => {
+const Home: React.FC<IHome> = ({
+  page_title,
+  page_description,
+  page_image,
+  url,
+  blocks,
+  projects,
+}) => {
   const seo = {
     title: page_title,
     description: page_description,
@@ -35,6 +44,7 @@ const Home: React.FC<IHome> = ({ page_title, page_description, page_image, url, 
     pagePath: url,
     ogType: 'Website',
   }
+  console.info(projects)
   return (
     <>
       <Seo {...seo} />
@@ -49,7 +59,7 @@ const Home: React.FC<IHome> = ({ page_title, page_description, page_image, url, 
           return <Logos key={block.item.id} {...block.item} />
         }
         if (block.item.type === 'Projects') {
-          return <Projects key={block.item.id} {...block.item} />
+          return <Projects key={block.item.id} {...block.item} projects={projects} />
         }
         if (block.item.type === 'Contact') {
           return <Contact key={block.item.id} {...block.item} />
@@ -65,6 +75,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       ...data.pages[0],
+      projects: data.projects,
     },
   }
 }

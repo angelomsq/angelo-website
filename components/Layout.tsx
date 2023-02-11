@@ -1,7 +1,6 @@
 import React from 'react'
 import IMenu from '../interfaces/menu.interface'
 import ISite from '../interfaces/site.interface'
-import Footer from './Footer'
 import Header from './Header'
 import Menu from './Menu'
 import Toggle from './Toggle'
@@ -21,7 +20,6 @@ const Layout: React.FC<ILayout> = ({ children, site, menu }) => {
       <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
         {children}
       </main>
-      <Footer />
     </div>
   )
 }

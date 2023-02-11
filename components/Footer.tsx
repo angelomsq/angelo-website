@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="mx-4 flex items-center justify-center py-8">
+    <footer className="absolute bottom-0 mx-4 flex items-center justify-center py-8">
       <span className="text-center text-sm">
         Proudly designed by Angelo Queiroz with <span className="text-xl">☕️</span> using{' '}
         <Link

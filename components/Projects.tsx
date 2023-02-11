@@ -1,9 +1,16 @@
 import React, { useRef } from 'react'
 import IContainer from '../interfaces/container.interface'
 import Image from 'next/image'
+import Link from 'next/link'
 import { getMediaURL } from '../plugins/helpers'
+import IProject from '../interfaces/project.interface'
+import { FaGithub, FaLink } from 'react-icons/fa'
 
-const Projects: React.FC<IContainer> = ({ anchor, heading, description, items }) => {
+interface IProjects extends IContainer {
+  projects: IProject[]
+}
+
+const Projects: React.FC<IProjects> = ({ anchor, heading, description, projects }) => {
   const ref = useRef(null)
   return (
     <section
@@ -19,8 +26,65 @@ const Projects: React.FC<IContainer> = ({ anchor, heading, description, items })
             __html: description,
           }}
         />
-        <div className="mt-10 flex flex-wrap items-center justify-center sm:mt-24">
-          <p>Coming soon!</p>
+        <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-6 xl:grid-cols-3">
+          {projects &&
+            projects.map((project, index) => (
+              <div
+                className={`${
+                  index === 2 ? 'col-auto sm:col-span-2 xl:col-auto' : ''
+                } group flex flex-col rounded-xl bg-main text-background shadow-xl transition-all ease-in hover:shadow-2xl dark:bg-tertiary dark:text-main sm:flex-row xl:flex-col`}
+                key={project.id}
+              >
+                <div
+                  className={`${
+                    index === 2 ? 'sm:w-1/2' : 'sm:w-1/3'
+                  } relative w-full flex-none overflow-hidden rounded-t-xl sm:rounded-l-xl sm:rounded-r-none xl:w-full xl:rounded-t-xl xl:rounded-l-none`}
+                >
+                  <Image
+                    src={getMediaURL(project.image.id)}
+                    width={300}
+                    height={300}
+                    className="relative inset-0 h-full w-full object-cover transition-all ease-in group-hover:scale-110 sm:absolute xl:relative xl:w-full"
+                    alt={'Angelo Photo'}
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6 text-left">
+                  <h4 className="text-base lg:text-lg">{project.title}</h4>
+                  <span className="my-3 text-xs text-paragraph dark:text-main dark:opacity-60 lg:text-sm">
+                    {project.description}
+                  </span>
+                  <span className="my-3 text-xs text-paragraph dark:text-main dark:opacity-60">
+                    <strong>Tech Stack:</strong> {project.techs.join(', ')}
+                  </span>
+                  <ul className="mt-auto flex items-center justify-between text-xs">
+                    {project.url && (
+                      <li>
+                        <Link
+                          href={project.url}
+                          className="flex items-center transition-all ease-in hover:underline"
+                          target={'_blank'}
+                        >
+                          <FaLink size={20} />
+                          <span className="ml-2">Live Preview</span>
+                        </Link>
+                      </li>
+                    )}
+                    {project.source_url && (
+                      <li>
+                        <Link
+                          href={project.source_url}
+                          className="flex items-center transition-all ease-in hover:underline"
+                          target={'_blank'}
+                        >
+                          <FaGithub size={20} />
+                          <span className="ml-2">Source Code</span>
+                        </Link>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
     </section>

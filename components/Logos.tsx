@@ -30,10 +30,10 @@ const Logos: React.FC<IContainer> = ({ anchor, heading, description, items }) =>
               >
                 <Image
                   src={getMediaURL(item.items_id.image.id)}
-                  width={100}
-                  height={100}
+                  width={120}
+                  height={120}
                   alt={item.items_id.image.title}
-                  className="h-20 w-20 text-center transition-all ease-in group-hover:scale-125"
+                  className="max-h-20 w-20 text-center transition-all ease-in group-hover:scale-125"
                 />
                 <span className="tooltip-top">{item.items_id.title}</span>
               </div>

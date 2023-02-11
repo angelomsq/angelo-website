@@ -22,6 +22,24 @@ const HOMEPAGE = gql`
         }
       }
     }
+    projects {
+      id
+      title
+      description
+      content
+      image {
+        ...imageFragment
+      }
+      gallery {
+        directus_files_id {
+          ...imageFragment
+        }
+      }
+      techs
+      url
+      source_url
+      date
+    }
   }
 `
 
