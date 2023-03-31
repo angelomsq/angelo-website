@@ -13,7 +13,7 @@ import ISite from '../interfaces/site.interface'
 const Header: React.FC<ISite> = ({ instagram, linkedin, github, whatsapp, youtube, discord }) => {
   return (
     <header className="fixed z-10 h-20 w-full flex-col content-between items-center bg-white bg-opacity-80 py-4 dark:bg-background dark:bg-opacity-80 sm:flex sm:min-h-screen sm:w-24 sm:bg-transparent sm:py-6 dark:sm:bg-transparent">
-      <div className="flex flex-col items-center sm:h-48">
+      <div className="flex flex-1 flex-col items-center">
         <Link href={'/#home'} className="cursor-pointer" scroll={false}>
           <svg
             width="60"

@@ -61,4 +61,12 @@
   .headline h1 strong {
     @apply primary-gradient;
   }
+
+  .carousel {
+    @apply -mx-4 px-4 py-8 !important;
+  }
+
+  .carousel .swiper-slide {
+    height: auto !important;
+  }
 }

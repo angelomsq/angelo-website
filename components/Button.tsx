@@ -26,9 +26,9 @@ const Button: React.FC<IButton['links_id']> = ({
       href={btnURL}
       scroll={false}
       target={external ? '_blank' : '_self'}
-      className={`${size === 'lg' ? 'btn-lg' : size === 'sm' ? 'btn-sm' : 'btn'} ${
+      className={`${size === 'lg' ? 'sm:btn-lg' : size === 'sm' ? 'sm:btn-sm' : 'btn'} ${
         centered ? 'mx-2' : 'mr-4'
-      } mb-4 ${style === 'primary' ? 'btn-primary' : 'btn-secondary'}`}
+      } btn mb-4 ${style === 'primary' ? 'btn-primary' : 'btn-secondary'}`}
     >
       <span className="drop-shadow-md">{label}</span>
       {external && <BsArrowUpRight size={16} className="ml-2 drop-shadow-md" />}

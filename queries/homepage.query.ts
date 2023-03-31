@@ -22,7 +22,7 @@ const HOMEPAGE = gql`
         }
       }
     }
-    projects {
+    projects(filter: { status: { _eq: "published" } }) {
       id
       title
       description

@@ -9,6 +9,12 @@ const httpLink = createHttpLink({
 const directus = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache(),
+  defaultOptions: {
+    query: {
+      fetchPolicy: 'network-only',
+      errorPolicy: 'ignore',
+    },
+  },
 })
 
 export default directus

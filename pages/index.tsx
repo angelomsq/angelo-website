@@ -76,6 +76,7 @@ export const getStaticProps: GetStaticProps = async () => {
       ...data.pages[0],
       projects: data.projects,
     },
+    revalidate: 60 * 60 * 24, // 1 day
   }
 }
 
