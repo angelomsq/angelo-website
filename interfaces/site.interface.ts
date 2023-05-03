@@ -1,7 +1,8 @@
 import IImage from './image.interface'
+import IMenu from './menu.interface'
 
 export default interface ISite {
-  id: number
+  sys: { id: number }
   title: string
   logo: IImage
   instagram: string | null
@@ -10,4 +11,7 @@ export default interface ISite {
   whatsapp: string | null
   youtube: string | null
   discord: string | null
+  mainMenuCollection: {
+    items: IMenu[]
+  }
 }

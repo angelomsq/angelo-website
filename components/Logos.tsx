@@ -1,11 +1,8 @@
 import React, { useRef } from 'react'
-import Lottie from 'lottie-react'
-import ScrollDownIcon from '../public/lottie/scroll-down-grey.json'
 import IContainer from '../interfaces/container.interface'
 import Image from 'next/image'
-import { getMediaURL } from '../plugins/helpers'
 
-const Logos: React.FC<IContainer> = ({ anchor, heading, description, items }) => {
+const Logos: React.FC<IContainer> = ({ anchor, heading, description, itemsCollection }) => {
   const ref = useRef(null)
   return (
     <section
@@ -22,20 +19,20 @@ const Logos: React.FC<IContainer> = ({ anchor, heading, description, items }) =>
           }}
         />
         <div className="mt-10 grid w-full grid-cols-4 items-center gap-4 lg:grid-cols-8 lg:gap-6">
-          {items &&
-            items.map((item) => (
+          {!!itemsCollection.items.length &&
+            itemsCollection.items.map((item) => (
               <div
-                key={item.items_id.id}
+                key={item.sys.id}
                 className="group relative flex w-auto items-center justify-center transition-all ease-in"
               >
                 <Image
-                  src={getMediaURL(item.items_id.image.id)}
+                  src={item.image.url}
                   width={120}
                   height={120}
-                  alt={item.items_id.image.title}
+                  alt={item.image.description || 'Logo Image'}
                   className="max-h-20 w-20 text-center transition-all ease-in group-hover:scale-125"
                 />
-                <span className="tooltip-top">{item.items_id.title}</span>
+                <span className="tooltip-top">{item.heading}</span>
               </div>
             ))}
         </div>

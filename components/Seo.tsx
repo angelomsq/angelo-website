@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
 import IImage from '../interfaces/image.interface'
-import { getMediaURL } from '../plugins/helpers'
 
 const constants = {
   companyName: 'Angelo Queiroz',
@@ -35,7 +34,7 @@ const Seo: React.FC<ISeo> = ({ title, description, pagePath, ogType, image }) =>
       <meta name="twitter:site" content={constants.twitterHandle} />
       <meta name="twitter:title" content={title} />
       {description && <meta name="twitter:description" content={description} />}
-      {image && <meta name="twitter:image" content={getMediaURL(image.id)} />}
+      {image && <meta name="twitter:image" content={image.url} />}
       {/* canonical link */}
       <link rel="canonical" href={constants.siteUrl + pagePath} />
       {/* open graph metadata */}
@@ -46,7 +45,7 @@ const Seo: React.FC<ISeo> = ({ title, description, pagePath, ogType, image }) =>
       {description && <meta property="og:description" content={description} />}
       {image && (
         <>
-          <meta property="og:image" content={getMediaURL(image.id)} />
+          <meta property="og:image" content={image.url} />
           <meta property="og:image:width" content={image.width?.toString()} />
           <meta property="og:image:height" content={image.height?.toString()} />
         </>

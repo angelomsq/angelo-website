@@ -3,9 +3,11 @@ import imageFragment from './fragments/image.fragment'
 
 const SITE = gql`
   ${imageFragment}
-  query MyQuery {
-    site {
-      id
+  query MySite {
+    site(id: "1Kzxki6CO5EFwSURjkuWVu", preview: ${process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW}) {
+      sys {
+        id
+      }
       title
       logo {
         ...imageFragment
@@ -16,11 +18,12 @@ const SITE = gql`
       whatsapp
       youtube
       discord
-    }
-    menu {
-      id
-      title
-      items
+      mainMenuCollection {
+        items {
+          label
+          url
+        }
+      }
     }
   }
 `

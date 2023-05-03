@@ -4,7 +4,7 @@ import ScrollDownIcon from '../public/lottie/scroll-down-grey.json'
 import IContainer from '../interfaces/container.interface'
 import Button from './Button'
 
-const Headline: React.FC<IContainer> = ({ id, anchor, heading, label, description, links }) => {
+const Headline: React.FC<IContainer> = ({ anchor, heading, description, linksCollection }) => {
   const ref = useRef(null)
   return (
     <section
@@ -25,9 +25,9 @@ const Headline: React.FC<IContainer> = ({ id, anchor, heading, label, descriptio
             }}
           />
           <div className="mt-10 flex flex-wrap items-center justify-center sm:mt-24">
-            {links &&
-              links.map((link) => (
-                <Button key={link.links_id.id} {...link.links_id} centered size="lg" />
+            {!!linksCollection.items.length &&
+              linksCollection.items.map((link) => (
+                <Button key={link.sys.id} {...link} centered size="lg" />
               ))}
           </div>
         </div>

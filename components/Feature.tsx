@@ -2,15 +2,13 @@ import React, { useRef } from 'react'
 import Image from 'next/image'
 import IContainer from '../interfaces/container.interface'
 import Button from './Button'
-import { getMediaURL } from '../plugins/helpers'
 
 const Feature: React.FC<IContainer> = ({
-  id,
   anchor,
   heading,
   label,
   description,
-  links,
+  linksCollection,
   image,
 }) => {
   const ref = useRef(null)
@@ -35,21 +33,21 @@ const Feature: React.FC<IContainer> = ({
               __html: description,
             }}
           />
-          {!!links.length && (
+          {!!linksCollection.items.length && (
             <div className="mt-10 flex flex-wrap items-center">
-              {links.map((link) => (
-                <Button key={link.links_id.id} {...link.links_id} />
+              {linksCollection.items.map((link) => (
+                <Button key={link.sys.id} {...link} />
               ))}
             </div>
           )}
         </div>
         <div className="order-1 mx-auto mb-8 flex w-3/4 items-center justify-center sm:flex-none md:order-2 md:w-1/4 md:px-0">
           <Image
-            src={getMediaURL(image.id)}
+            src={image.url}
             width={300}
             height={300}
             className="border-spacing-8 rounded-full border-8 border-transparent bg-gradient-to-b from-primary via-secondary to-primary-dark bg-clip-border bg-origin-padding"
-            alt={'Angelo Photo'}
+            alt={image.description || 'Angelo Photo'}
           />
         </div>
       </div>

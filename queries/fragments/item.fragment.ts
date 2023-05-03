@@ -1,10 +1,14 @@
 import { gql } from '@apollo/client'
 import imageFragment from './image.fragment'
+import linkFragment from './link.fragment'
 
 const itemFragment = gql`
   ${imageFragment}
-  fragment itemFragment on items {
-    id
+  ${linkFragment}
+  fragment itemFragment on Items {
+    sys {
+      id
+    }
     title
     heading
     label
@@ -13,6 +17,11 @@ const itemFragment = gql`
       ...imageFragment
     }
     url
+    linksCollection(limit: 3) {
+      items {
+        ...linkFragment
+      }
+    }
   }
 `
 

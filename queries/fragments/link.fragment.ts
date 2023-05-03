@@ -1,15 +1,15 @@
 import { gql } from '@apollo/client'
 
 const linkFragment = gql`
-  fragment linkFragment on links {
-    id
+  fragment linkFragment on Links {
+    sys {
+      id
+    }
     label
     description
     url
     download {
-      id
-      title
-      type
+      url
     }
     external
     style

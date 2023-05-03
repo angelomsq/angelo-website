@@ -1,10 +1,8 @@
 import React, { useRef } from 'react'
 import IContainer from '../interfaces/container.interface'
-import Image from 'next/image'
-import { getMediaURL } from '../plugins/helpers'
 import Footer from './Footer'
 
-const Contact: React.FC<IContainer> = ({ anchor, heading, description, items }) => {
+const Contact: React.FC<IContainer> = ({ anchor, heading, description }) => {
   const ref = useRef(null)
   return (
     <section

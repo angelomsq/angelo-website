@@ -6,39 +6,51 @@ const HOMEPAGE = gql`
   ${imageFragment}
   ${containerFragment}
   query Homepage {
-    pages(filter: { url: { _eq: "/" } }) {
-      id
-      page_title
-      page_image {
-        ...imageFragment
-      }
-      page_description
-      title
-      url
-      content
-      blocks {
-        item {
-          ...containerFragment
+    pages: pagesCollection(where: { url: "/" }, limit: 1) {
+      items {
+        sys {
+          id
+        }
+        seoTitle
+        seoImage {
+          ...imageFragment
+        }
+        seoDescription
+        title
+        url
+        content {
+          json
+        }
+        blocks: blocksCollection(limit: 12) {
+          items {
+            ...containerFragment
+          }
         }
       }
     }
-    projects(filter: { status: { _eq: "published" } }) {
-      id
-      title
-      description
-      content
-      image {
-        ...imageFragment
-      }
-      gallery {
-        directus_files_id {
+    projects: projectsCollection(limit: 10, order: date_DESC) {
+      items {
+        sys {
+          id
+        }
+        title
+        description
+        content {
+          json
+        }
+        image {
           ...imageFragment
         }
+        gallery: galleryCollection {
+          items {
+            ...imageFragment
+          }
+        }
+        techs
+        url
+        sourceUrl
+        date
       }
-      techs
-      url
-      source_url
-      date
     }
   }
 `

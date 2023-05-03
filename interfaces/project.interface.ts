@@ -1,15 +1,16 @@
 import IImage from './image.interface'
-import IGallery from './gallery.interface'
 
 export default interface IProject {
-  id: number
+  sys: { id: number }
   title: string
   description: string
   content: string
   image: IImage
-  gallery: IGallery[]
+  gallery: {
+    items: IImage[]
+  }
   techs: string[]
   url: string
-  source_url: string
+  sourceUrl: string
   date: string
 }

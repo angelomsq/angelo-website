@@ -7,8 +7,10 @@ const containerFragment = gql`
   ${imageFragment}
   ${linkFragment}
   ${itemFragment}
-  fragment containerFragment on containers {
-    id
+  fragment containerFragment on Containers {
+    sys {
+      id
+    }
     title
     anchor
     type
@@ -21,13 +23,13 @@ const containerFragment = gql`
     background {
       ...imageFragment
     }
-    items {
-      items_id {
+    itemsCollection(limit: 30) {
+      items {
         ...itemFragment
       }
     }
-    links {
-      links_id {
+    linksCollection(limit: 3) {
+      items {
         ...linkFragment
       }
     }

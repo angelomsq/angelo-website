@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import IContainer from '../interfaces/container.interface'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getMediaURL } from '../plugins/helpers'
 import IProject from '../interfaces/project.interface'
 import { FaGithub, FaLink, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react'
@@ -67,7 +66,7 @@ const Projects: React.FC<IProjects> = ({ anchor, heading, description, projects 
           </div>
           {projects &&
             projects.map((project, index) => (
-              <SwiperSlide key={project.id}>
+              <SwiperSlide key={project.sys.id}>
                 <div
                   className={`group flex h-full flex-col items-center rounded-xl bg-main text-background shadow-lg transition-all ease-in hover:shadow-xl dark:bg-tertiary dark:text-main`}
                 >
@@ -75,7 +74,7 @@ const Projects: React.FC<IProjects> = ({ anchor, heading, description, projects 
                     className={`relative w-full flex-none overflow-hidden rounded-tl-xl rounded-tr-xl`}
                   >
                     <Image
-                      src={getMediaURL(project.image.id)}
+                      src={project.image.url}
                       width={300}
                       height={300}
                       className="relative inset-0 h-40 w-full object-cover transition-all ease-in group-hover:scale-110"
@@ -103,10 +102,10 @@ const Projects: React.FC<IProjects> = ({ anchor, heading, description, projects 
                           </Link>
                         </li>
                       )}
-                      {project.source_url && (
+                      {project.sourceUrl && (
                         <li>
                           <Link
-                            href={project.source_url}
+                            href={project.sourceUrl}
                             className="flex items-center transition-all ease-in hover:underline"
                             target={'_blank'}
                           >

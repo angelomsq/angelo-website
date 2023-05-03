@@ -3,7 +3,7 @@ import IItem from './item.interface'
 import ILink from './link.interface'
 
 export default interface IContainer {
-  id: number
+  sys: { id: number }
   title: string
   anchor: string
   type: string
@@ -12,6 +12,10 @@ export default interface IContainer {
   description: string
   image: IImage
   background: IImage
-  items: IItem[]
-  links: ILink[]
+  itemsCollection: {
+    items: IItem[]
+  }
+  linksCollection: {
+    items: ILink[]
+  }
 }
