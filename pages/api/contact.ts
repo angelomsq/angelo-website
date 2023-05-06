@@ -4,11 +4,11 @@ import mg from '../../services/mailgun'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' })
+    return res.status(405).json({ status: 'failure', message: 'Method not allowed' })
   }
   const data = req.body
   if (!data.firstName || !data.lastName || !data.email || !data.message || !data.token) {
-    return res.status(400).json({ message: 'Bad request' })
+    return res.status(400).json({ status: 'failure', message: 'Bad request' })
   }
   console.log('FormData:', req.body)
   try {
@@ -35,13 +35,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             text: content,
             html: content,
           })
-          .then((msg: any) => res.status(200).json({ message: msg }))
-          .catch((err: any) => res.status(400).json({ message: err }))
+          .then((msg: any) => res.status(200).json({ status: 'success', message: msg }))
+          .catch((err: any) => res.status(400).json({ status: 'failure', message: err }))
       } else {
-        return res.status(400).json({ message: 'Failed ReCaptcha' })
+        return res.status(400).json({ status: 'failure', message: 'Failed ReCaptcha Score' })
       }
     }
   } catch (err) {
-    return res.status(400).json({ message: err })
+    return res.status(400).json({ status: 'failure', message: 'Failed ReCaptcha' })
   }
 }

@@ -42,7 +42,8 @@ const Contact: React.FC<IContainer> = ({ anchor, heading, description }) => {
 
   const handleContactForm = async (data: ContactForm, token: string) => {
     console.log(data, token)
-    await axios.post<ContactForm>('/api/contact', { ...data, token })
+    const response = await axios.post<ContactForm>('/api/contact', { ...data, token })
+    console.log(response)
   }
 
   return (
