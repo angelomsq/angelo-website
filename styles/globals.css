@@ -39,7 +39,7 @@
 
 @layer components {
   .btn {
-    @apply flex items-center rounded-full py-3 px-5 font-secondary text-base font-semibold text-main shadow-md shadow-background/20 transition-all ease-in focus:outline-none focus:ring-2 focus:ring-opacity-75 dark:shadow-main/20;
+    @apply flex items-center rounded-full py-3 px-5 font-secondary text-base font-semibold text-main transition-all ease-in focus:outline-none focus:ring-2 focus:ring-opacity-75;
   }
 
   .btn-sm {
@@ -69,4 +69,8 @@
   .carousel .swiper-slide {
     height: auto !important;
   }
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
 }

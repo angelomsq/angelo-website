@@ -11,7 +11,7 @@ interface ILayout {
 
 const Layout: React.FC<ILayout> = ({ children, site }) => {
   return (
-    <div className="h-screen w-full bg-main dark:bg-background">
+    <div className="h-screen w-full">
       <Header {...site} />
       <Menu menu={site.mainMenuCollection.items} />
       <Toggle />

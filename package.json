@@ -11,17 +11,23 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.3",
+    "@hookform/resolvers": "^3.1.0",
+    "axios": "^1.4.0",
     "framer-motion": "^8.4.3",
     "graphql": "^16.6.0",
     "isomorphic-unfetch": "^4.0.2",
     "lottie-react": "^2.3.1",
+    "mailgun.js": "^8.2.1",
     "next": "^13.1.1",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-recaptcha-v3": "^1.10.1",
+    "react-hook-form": "^7.43.9",
     "react-icons": "^4.6.0",
     "react-scroll": "^1.8.9",
-    "swiper": "^9.0.5"
+    "swiper": "^9.0.5",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/node": "18.8.5",

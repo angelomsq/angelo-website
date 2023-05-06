@@ -1,5 +1,4 @@
 import type { GetStaticProps, NextPage } from 'next'
-import Image from 'next/image'
 import Seo from '../components/Seo'
 import HOMEPAGE from '../queries/homepage.query'
 import contentful from '../services/contentful'

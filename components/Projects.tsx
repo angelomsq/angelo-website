@@ -68,7 +68,7 @@ const Projects: React.FC<IProjects> = ({ anchor, heading, description, projects 
             projects.map((project, index) => (
               <SwiperSlide key={project.sys.id}>
                 <div
-                  className={`group flex h-full flex-col items-center rounded-xl bg-main text-background shadow-lg transition-all ease-in hover:shadow-xl dark:bg-tertiary dark:text-main`}
+                  className={`group flex h-full flex-col items-center rounded-xl bg-main text-background shadow-card transition-all ease-in hover:shadow-xl dark:bg-tertiary dark:text-main`}
                 >
                   <div
                     className={`relative w-full flex-none overflow-hidden rounded-tl-xl rounded-tr-xl`}

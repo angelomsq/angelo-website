@@ -11,7 +11,7 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" href="/favicon.ico" />
           <meta name="robots" content="index, follow" />
         </Head>
-        <body className="font-primary text-tertiary dark:text-main">
+        <body className="bg-main font-primary text-tertiary dark:bg-background dark:text-main">
           <Main />
           <NextScript />
         </body>
