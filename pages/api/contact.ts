@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
     )
 
-    console.log('RECAPTCHA:', recaptcha.data)
+    // console.log('RECAPTCHA:', recaptcha.data)
 
     if (recaptcha.data.success) {
       if (recaptcha.data.score > 0.5) {
@@ -40,8 +40,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       } else {
         return res.status(400).json({ status: 'failure', message: 'Failed ReCaptcha Score' })
       }
+    } else {
+      return res.status(400).json({ status: 'failure', message: 'Failed ReCaptcha' })
     }
   } catch (err) {
-    return res.status(400).json({ status: 'failure', message: 'Failed ReCaptcha' })
+    return res.status(400).json({ status: 'failure', message: err })
   }
 }

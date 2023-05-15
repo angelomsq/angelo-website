@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
@@ -9,6 +9,8 @@ import TextInput from './Input/TextInput'
 import TextArea from './Input/TextArea'
 import { FaPaperPlane } from 'react-icons/fa'
 import axios from 'axios'
+import { FaSpinner } from 'react-icons/fa'
+import { toast } from 'react-toastify'
 
 const contactFormSchema = zod.object({
   firstName: zod.string().min(1, 'This field is required'),
@@ -20,11 +22,13 @@ const contactFormSchema = zod.object({
 type ContactForm = zod.infer<typeof contactFormSchema>
 
 const Contact: React.FC<IContainer> = ({ anchor, heading, description }) => {
+  const [loading, setLoading] = useState(false)
   const ref = useRef(null)
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<ContactForm>({ resolver: zodResolver(contactFormSchema) })
 
   const { executeRecaptcha } = useGoogleReCaptcha()
@@ -42,8 +46,17 @@ const Contact: React.FC<IContainer> = ({ anchor, heading, description }) => {
 
   const handleContactForm = async (data: ContactForm, token: string) => {
     console.log(data, token)
-    const response = await axios.post<ContactForm>('/api/contact', { ...data, token })
-    console.log(response)
+    setLoading(true)
+    try {
+      const response = await axios.post<ContactForm>('/api/contact', { ...data, token })
+      console.log(response)
+      setLoading(false)
+      toast.success(response.data.message)
+      reset()
+    } catch (error: any) {
+      setLoading(false)
+      toast.error(error.response.data.message)
+    }
   }
 
   return (
@@ -119,7 +132,17 @@ const Contact: React.FC<IContainer> = ({ anchor, heading, description }) => {
               </div>
               <div className="flex justify-end">
                 <button type="submit" className="btn btn-primary shadow-none">
-                  Send Message <FaPaperPlane className="ml-2" />
+                  {loading ? (
+                    <>
+                      Sending
+                      <FaSpinner className="ml-2 animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <FaPaperPlane className="ml-2" />
+                    </>
+                  )}
                 </button>
               </div>
             </form>
