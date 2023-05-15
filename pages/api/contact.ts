@@ -35,7 +35,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             text: content,
             html: content,
           })
-          .then((msg: any) => res.status(200).json({ status: 'success', message: msg }))
+          .then((msg: any) =>
+            res.status(200).json({ status: 'success', message: 'E-mail successfully sent!' })
+          )
           .catch((err: any) => res.status(400).json({ status: 'failure', message: err }))
       } else {
         return res.status(400).json({ status: 'failure', message: 'Failed ReCaptcha Score' })

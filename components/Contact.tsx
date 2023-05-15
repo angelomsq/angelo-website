@@ -45,11 +45,9 @@ const Contact: React.FC<IContainer> = ({ anchor, heading, description }) => {
   }
 
   const handleContactForm = async (data: ContactForm, token: string) => {
-    console.log(data, token)
     setLoading(true)
     try {
       const response = await axios.post<ContactForm>('/api/contact', { ...data, token })
-      console.log(response)
       setLoading(false)
       toast.success(response.data.message)
       reset()
