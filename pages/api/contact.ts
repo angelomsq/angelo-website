@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 import mg from '../../services/mailgun'
+import { render } from '@react-email/render'
+import ContactTemplate from '../../components/Emails/ContactTemplate'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -26,14 +28,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (recaptcha.data.success) {
       if (recaptcha.data.score > 0.5) {
-        const content = `Contact form submission: ${data.firstName} ${data.lastName} <${data.email}> <br /> ${data.message}`
+        const content = `Contact form submission: ${data.firstName} ${data.lastName} (${data.email}) <br /> ${data.message}`
+        const htmlContent = render(
+          ContactTemplate({
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            message: data.message,
+          })
+        )
         mg.messages
           .create(process.env.MAILGUN_DOMAIN, {
             from: 'Angelo Queiroz Website <noreply@angeloqueiroz.com>',
             to: ['contato@angeloqueiroz.com'],
             subject: 'Angelo Queiroz | Website Contact Form',
             text: content,
-            html: content,
+            html: htmlContent,
           })
           .then((msg: any) =>
             res.status(200).json({ status: 'success', message: 'E-mail successfully sent!' })
