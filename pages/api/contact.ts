@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 import mg from '../../services/mailgun'
 import { render } from '@react-email/render'
-import ContactTemplate from '../../components/Emails/ContactTemplate'
+import ContactTemplate from '../../emails/ContactTemplate'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
