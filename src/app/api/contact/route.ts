@@ -44,7 +44,7 @@ export async function POST(request: Request) {
           }),
         )
         mg.messages
-          .create(process.env.MAILGUN_DOMAIN, {
+          .create(process.env.MAILGUN_DOMAIN || 'mail.angeloqueiroz.com', {
             from: 'Angelo Queiroz Website <noreply@angeloqueiroz.com>',
             to: ['contato@angeloqueiroz.com'],
             subject: 'Angelo Queiroz | Website Contact Form',
