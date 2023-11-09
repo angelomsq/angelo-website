@@ -1,6 +1,9 @@
-const formData = require('form-data')
-const Mailgun = require('mailgun.js')
-const mailgun = new Mailgun(formData)
-const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY })
+import FormData from 'form-data'
+import Mailgun from 'mailgun.js'
+const mailgun = new Mailgun(FormData)
+const mg = mailgun.client({
+  username: 'api',
+  key: process.env.MAILGUN_API_KEY || '',
+})
 
 export default mg

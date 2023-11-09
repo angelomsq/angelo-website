@@ -6,26 +6,11 @@ export type Entity = {
   description: string
 }
 
-export type ItemsCollection = {
-  items: Item[]
-}
-export type LinksCollection = {
-  items: LinkItem[]
-}
-
-export type Container = Entity & {
-  anchor: string
-  type: string
-  image: Image
-  background: Image
-  itemsCollection: ItemsCollection
-  linksCollection: LinksCollection
-}
-
-export type Item = Entity & {
-  image: Image
+export type Image = {
   url: string
-  linksCollection: LinksCollection
+  description: string | null
+  width: number | null
+  height: number | null
 }
 
 export type LinkItem = Entity & {
@@ -37,9 +22,25 @@ export type LinkItem = Entity & {
   style: string
 }
 
-export type Image = {
+export type LinksCollection = {
+  items: LinkItem[]
+}
+
+export type Item = Entity & {
+  image: Image
   url: string
-  description: string | null
-  width: number | null
-  height: number | null
+  linksCollection: LinksCollection
+}
+
+export type ItemsCollection = {
+  items: Item[]
+}
+
+export type Container = Entity & {
+  anchor: string
+  type: string
+  image: Image
+  background: Image
+  itemsCollection: ItemsCollection
+  linksCollection: LinksCollection
 }

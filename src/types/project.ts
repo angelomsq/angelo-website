@@ -1,4 +1,4 @@
-import { Entity, Image } from "@/types"
+import { Entity, Image } from '@/types'
 
 export type Project = Entity & {
   content: string

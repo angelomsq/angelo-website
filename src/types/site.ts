@@ -1,4 +1,9 @@
-import { Image } from "@/types"
+import { Image } from '@/types'
+
+export type Menu = {
+  label: string
+  url: string
+}
 
 export type Site = {
   sys: { id: number }
@@ -14,9 +19,3 @@ export type Site = {
     items: Menu[]
   }
 }
-
-export type Menu = {
-  label: string
-  url: string
-}
-

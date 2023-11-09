@@ -51,7 +51,7 @@ export async function POST(request: Request) {
             text: content,
             html: htmlContent,
           })
-          .then((msg: any) =>
+          .then(() =>
             Response.json({
               status: 'success',
               message: 'E-mail successfully sent!',
