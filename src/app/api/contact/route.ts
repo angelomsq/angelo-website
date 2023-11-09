@@ -30,7 +30,7 @@ export async function POST(request: Request) {
       },
     )
 
-    // console.log('RECAPTCHA:', recaptcha.data)
+    console.log('RECAPTCHA:', recaptcha.data)
 
     if (recaptcha.data.success) {
       if (recaptcha.data.score > 0.5) {
@@ -52,10 +52,13 @@ export async function POST(request: Request) {
             html: htmlContent,
           })
           .then(() =>
-            Response.json({
-              status: 'success',
-              message: 'E-mail successfully sent!',
-            }),
+            Response.json(
+              {
+                status: 'success',
+                message: 'E-mail successfully sent!',
+              },
+              { status: 200 },
+            ),
           )
           .catch((err: any) =>
             Response.json({ status: 'failure', message: err }, { status: 400 }),
@@ -73,6 +76,7 @@ export async function POST(request: Request) {
       )
     }
   } catch (err) {
+    console.error(err)
     return Response.json({ status: 'failure', message: err }, { status: 400 })
   }
 }
