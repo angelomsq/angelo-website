@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { LinkItem } from '@/types'
 import { BsArrowUpRight } from 'react-icons/bs'
 
-type ButtonProps = LinkItem & {
+export type ButtonProps = LinkItem & {
   size?: string
   centered?: boolean
 }
