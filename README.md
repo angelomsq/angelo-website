@@ -1,34 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Angelo Queiroz | Software Engineer
 
-## Getting Started
+Website developed using NextJS + TailwindCSS + ContentfulCMS + GraphQL + Mailgun
 
-First, run the development server:
+## ContentfulCMS
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+The whole website content comes from ContentfulCMS environment.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+##### Data Structures:
+- Containers (Type, Heading, Description, Image, Items[], Links[], ...)
+- Items (Heading, Label, Description, Image, URL, Links[])
+- Links (Label, Description, URL, Download File, Target, ...)
+- Menus (Label, URL)
+- Pages (SEO Fields, URL, Markdown Content, Dynamic Blocks/Containers)
+- Projects (Name, Description, Image, URL, SourceURL, ...)
+- Site Settings (Site Name, Logo, Main Menu, Social Links)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Deployed on Vercel
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This project is deployed on vercel using SSG (Static Site Generation), and make use of an API route to validate the Google Captcha and send the contact form result by Mailgun API.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+https://angeloqueiroz.com
