@@ -10,7 +10,10 @@ import 'react-toastify/dist/ReactToastify.css'
 import './globals.css'
 import Providers from '@/components/Providers'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://angeloqueiroz.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Welcome',
     template: `%s | Angelo Queiroz`,
@@ -35,9 +38,44 @@ type LayoutProps = {
 }
 export const revalidate = 60 * 60 * 24 // 1 day
 
+const defaultSite: Site = {
+  sys: { id: 0 },
+  title: 'Angelo Queiroz Website',
+  logo: {
+    url: '',
+    description: null,
+    width: null,
+    height: null,
+  },
+  instagram: null,
+  linkedin: null,
+  github: null,
+  whatsapp: null,
+  youtube: null,
+  discord: null,
+  mainMenuCollection: {
+    items: [],
+  },
+}
+
 export default async function RootLayout({ children }: LayoutProps) {
-  const { data } = await contentful.query({ query: SITE })
-  const site: Site = data.site
+  let site: Site = defaultSite
+
+  try {
+    const { data } = await contentful.query({
+      query: SITE,
+      variables: {
+        preview: process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW === 'true',
+      },
+    })
+
+    if (data?.site) {
+      site = data.site
+    }
+  } catch (error) {
+    console.error('Failed to load site settings from Contentful:', error)
+  }
+
   return (
     <html lang="en" className="dark scroll-smooth sm:snap-y sm:snap-mandatory">
       <body className="bg-main font-primary text-tertiary dark:bg-background dark:text-main">

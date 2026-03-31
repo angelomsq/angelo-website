@@ -54,9 +54,13 @@ export default function Contact({ anchor, heading, description }: Container) {
       setLoading(false)
       toast.success(response.data.message)
       reset()
-    } catch (error: any) {
+    } catch (error: unknown) {
       setLoading(false)
-      toast.error(error.response.data.message)
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message || 'An error occurred')
+      } else {
+        toast.error('An error occurred')
+      }
     }
   }
 

@@ -28,9 +28,20 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const { data } = await contentful.query({ query: HOMEPAGE })
-  const page: PageProps = data.pages.items[0]
-  const projects: Project[] = data.projects.items
+  let page: PageProps | null = null
+  let projects: Project[] = []
+
+  try {
+    const { data } = await contentful.query({ query: HOMEPAGE })
+    page = data?.pages?.items?.[0] || null
+    projects = data?.projects?.items || []
+  } catch (error) {
+    console.error('Failed to load homepage content from Contentful:', error)
+  }
+
+  if (!page?.blocks?.items?.length) {
+    return null
+  }
 
   return (
     <>

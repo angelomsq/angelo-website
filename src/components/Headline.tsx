@@ -1,8 +1,12 @@
 'use client'
 import { Container } from '@/types'
-import Lottie from 'lottie-react'
+import dynamic from 'next/dynamic'
 import ScrollDownIcon from '../../public/lottie/scroll-down-grey.json'
 import Button from './Button'
+
+const Lottie = dynamic(() => import('lottie-react'), {
+  ssr: false,
+})
 
 export default function Headline({
   anchor,
