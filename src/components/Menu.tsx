@@ -1,10 +1,10 @@
 'use client'
-import { Menu } from '@/types'
+import type { Menu as MenuItem } from '@/types'
 import { useState } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 
 interface MenuProps {
-  menu: Menu[]
+  menu: MenuItem[]
 }
 
 export default function Menu({ menu }: MenuProps) {

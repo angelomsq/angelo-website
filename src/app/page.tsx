@@ -20,7 +20,17 @@ type PageProps = {
     items: Container[]
   }
 }
-export const revalidate = 60 * 60 * 24 // 1 day
+
+type HomepageQueryResult = {
+  pages?: {
+    items?: PageProps[]
+  }
+  projects?: {
+    items?: Project[]
+  }
+}
+
+export const revalidate = 86400 // 1 day
 
 export const metadata: Metadata = {
   title: 'Homepage | Angelo Queiroz',
@@ -32,7 +42,9 @@ export default async function Home() {
   let projects: Project[] = []
 
   try {
-    const { data } = await contentful.query({ query: HOMEPAGE })
+    const { data } = await contentful.query<HomepageQueryResult>({
+      query: HOMEPAGE,
+    })
     page = data?.pages?.items?.[0] || null
     projects = data?.projects?.items || []
   } catch (error) {

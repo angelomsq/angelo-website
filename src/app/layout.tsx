@@ -36,7 +36,12 @@ export const metadata: Metadata = {
 type LayoutProps = {
   children: React.ReactNode
 }
-export const revalidate = 60 * 60 * 24 // 1 day
+
+type SiteQueryResult = {
+  site: Site
+}
+
+export const revalidate = 86400 // 1 day
 
 const defaultSite: Site = {
   sys: { id: 0 },
@@ -62,7 +67,7 @@ export default async function RootLayout({ children }: LayoutProps) {
   let site: Site = defaultSite
 
   try {
-    const { data } = await contentful.query({
+    const { data } = await contentful.query<SiteQueryResult>({
       query: SITE,
       variables: {
         preview: process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW === 'true',
@@ -77,8 +82,15 @@ export default async function RootLayout({ children }: LayoutProps) {
   }
 
   return (
-    <html lang="en" className="dark scroll-smooth sm:snap-y sm:snap-mandatory">
-      <body className="bg-main font-primary text-tertiary dark:bg-background dark:text-main">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className="scroll-smooth sm:snap-y sm:snap-mandatory"
+    >
+      <body
+        suppressHydrationWarning
+        className="bg-main font-primary text-tertiary dark:bg-background dark:text-main"
+      >
         <div className="h-screen w-full">
           <Providers>
             <Header {...site} />

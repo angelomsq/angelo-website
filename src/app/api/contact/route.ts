@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     if (recaptcha.data.success) {
       if (recaptcha.data.score > 0.5) {
         const content = `Contact form submission: ${data.firstName} ${data.lastName} (${data.email}) <br /> ${data.message}`
-        const htmlContent = render(
+        const htmlContent = await render(
           ContactTemplate({
             firstName: data.firstName,
             lastName: data.lastName,
